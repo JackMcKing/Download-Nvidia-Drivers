@@ -53,12 +53,10 @@ function Download {
 	}
 }
 
-if($args -eq '-?' -or $args-eq '/?' -or $args -eq '-h' -or $args -eq '-Help' -or $args -eq '--help'){
+if ('List-Versions' -eq $Action) {
+	List-Versions $ListNumber
+} elseif ('Download' -eq $Action) {
+	Download -Driver_Version $Version -Path $OutPath
+} else {
 	Write-Output $HELP
-}else{
-	if ('List-Versions' -eq $Action) {
-		List-Versions $ListNumber
-	} elseif ('Download' -eq $Action) {
-		Download -Driver_Version $Version -Path $OutPath
-	}
 }
